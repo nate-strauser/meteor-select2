@@ -10,6 +10,6 @@ Package for [Select2](http://ivaynberg.github.io/select2/)
 
 Add package
 ```
-meteor add nate-strauser:select2
+meteor add natestrauser:select2
 ```
 
