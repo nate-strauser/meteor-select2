@@ -1,0 +1,88 @@
+<section>
+  <h2 id="data">
+    Can I load data into Select2 using an array?
+  </h2>
+
+  <p>
+    While Select2 is designed to be used with a <code>&lt;select&gt;</code> tag, the data that is used to search through and display the results can be loaded from a JavaScript array using the <code>data</code> option. This option should be passed in during the initialization of Select2.
+  </p>
+
+<pre class="prettyprint linenums">
+$('select').select2({
+  data: [
+    {
+      id: 'value',
+      text: 'Text to display'
+    },
+    // ... more data objects ...
+  ]
+});
+</pre>
+
+  <h3>
+    What properties are required on the objects passed in to the array?
+  </h3>
+
+  <p>
+    The <code>id</code> and <code>text</code> properties are required on each object, and these are the properties that Select2 uses for the internal data objects. Any additional paramters passed in with data objects will be included on the data objects that Select2 exposes.
+  </p>
+
+  <h3>
+    How should nested results be formatted?
+  </h3>
+
+  <p>
+    Nested results should be specified using the <code>children</code> property on the data objects that are passed in. This <code>children</code> property should be an array of data objects that are grouped under this option, and the label for the group should be specified as the <code>text</code> property on the root data object.
+  </p>
+
+<pre class="prettyprint linenums">
+{
+  text: 'Group label',
+  children: [
+    {
+      id: 'nested-1',
+      text: 'First nested option'
+    },
+    // ... more data objects ...
+  ]
+}
+</pre>
+
+  <h3>
+    How many levels of nesting are allowed?
+  </h3>
+
+  <p>
+    Because Select2 falls back to an <code>&lt;optgroup&gt;</code> when creating nested options, only <a href="#how-many-levels-of-nesting-can-there-be">a single level of nesting</a> is supported. Any additional levels of nesting is not guarenteed to be displayed properly across all browsers and devices.
+  </p>
+
+  <h3>
+    Why are <code>&lt;option&gt;</code> tags being created?
+  </h3>
+
+  <p>
+    The <code>data</code> option is a shortcut that Select2 provides which allows you to load options into your <code>select</code> from a data array.
+  </p>
+
+  {% include options/not-written.html %}
+
+  <h3>
+    My objects don&apos;t use <code>id</code> for their unique identifiers, what can I do?
+  </h3>
+
+  <p>
+    You can re-map your identifier before passing it to Select2.
+  </p>
+
+  {% include options/not-written.html %}
+
+  <h3>
+    My objects use a property other than <code>text</code> for the text that needs to be displayed
+  </h3>
+
+  <p>
+    These can also be re-mapped.
+  </p>
+
+  {% include options/not-written.html %}
+</section>
