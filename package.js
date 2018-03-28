@@ -10,7 +10,7 @@ Package.on_use(function(api) {
   api.use("jquery", "client");
 
   api.add_files([
-    "lib/select2/dist/js/select2.js"
+    "lib/select2/dist/js/select2.full.min.js"
   ], "client", { bare: true });
 
   api.add_files([
